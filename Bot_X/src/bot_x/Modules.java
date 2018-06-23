@@ -220,7 +220,7 @@ public class Modules {
        //        System.out.println(getUserOpenOrders(Bot_Action.key, Bot_Action.secret).get("order"));
 //        System.out.println(getUserOpenOrders(Bot_Action.key, Bot_Action.secret).get("orderId"));
 //
-//        System.out.println(getUserBalansInfo(Bot_Action.key, Bot_Action.secret).get("reserv"));
+        System.out.println(getUserBalansInfo(Bot_Action.key, Bot_Action.secret).get("reserv"));
 //        System.out.println(getUserBalansInfo(Bot_Action.key, Bot_Action.secret).get("reserv"));
 //        Exmo e = new Exmo(Bot_Action.key, Bot_Action.secret);
 //        String result = e.Request("user_open_orders", null);
@@ -239,7 +239,7 @@ public class Modules {
 //        String key = "";
 //        String secret = "";
 //        String valent = Bot_Action.getPair();
-        System.out.println(getConfBallans(Bot_Action.key, Bot_Action.secret, Bot_Action.valent).get("usd"));
+//        System.out.println(getConfBallans(Bot_Action.key, Bot_Action.secret, Bot_Action.valent).get("usd"));
 //            System.out.println(getUserBalansInfo(Bot_Action.key, Bot_Action.secret).get("setB"));
     }
 }

@@ -14,27 +14,25 @@ import java.util.Stack;
  */
 public class Test {
 
-    public static void main(String[] args) {
-     String r = " fwr=result: true, rfwr rw grg wrwg ";
-        int i = 0;
-        do{
-            System.out.println("frwf");
-            System.out.println(r.indexOf("true"));
-        }while (r.indexOf("true") == -1);
-        System.out.println("frfddddddddddddddd");
-//    while (!r.equalsIgnoreCase("5")){
-//        i++;
-//            System.out.println(i);
-//             r = Integer.toString(i);
-//            System.out.println(r);
+    public static double cal(double prise, double byPrise, double profit) {
+        double p = 0.0;
+        p = (prise + profit) * 1.004;
+        return p;
+    }
+//
+//    public static double fail(double mustBuy) {
+//        
 //    }
-    
-    
+
+    public static void main(String[] args) {
+        double prise = 0.0;
+
+        System.out.println(cal(480, 480, 0.5));
+
     }
 }
 
-        
-        /*String key = "";
+/*String key = "";
         String secret = "";
         String valent = "ETH_USD";
         Exmo e = new Exmo(key, secret);
@@ -117,4 +115,4 @@ public class Test {
 //        System.out.println(statCup.get("bid_top"));
     }
 }
-*/
+ */
