@@ -197,27 +197,31 @@ public class Modules {
     public static HashMap getUserOpenOrders(String key, String secret) {
         Exmo e = new Exmo(key, secret);
         String result = e.Request("user_open_orders", null);
-//        System.out.println(result);
         HashMap<String, String> hashAr = new HashMap<String, String>();
         if (!result.equalsIgnoreCase("{}")) {
             result = result.replaceAll("\"ETH_USD\":\\[", "").replaceAll("\\{", "").replaceAll("\"", "").replaceAll("}]}", "");
             String[] ar = result.split(",");
             String ee = "";
+            int num = 1;
             for (int i = 0; i < ar.length; i++) {
                 hashAr.put("orderId", ar[0].substring(9));
                 ee = ee.concat(ar[i] + " ");
+                if (!(ar[i].indexOf("order_id") == -1)) {
+                    hashAr.put(Integer.toString(num), ar[i].substring(9));
+                    hashAr.put("num", Integer.toString(num));
+                    num++;
+                }
             }
             hashAr.put("order", ee);
-        }else{
-        hashAr.put("order", "Нету открытых ордеров");
-        hashAr.put("orderId", "0");
+        } else {
+            hashAr.put("order", "Нету открытых ордеров");
+            hashAr.put("orderId", "0");
         }
         return hashAr;
-
     }
 
     public static void main(String[] args) throws InterruptedException {
-       //        System.out.println(getUserOpenOrders(Bot_Action.key, Bot_Action.secret).get("order"));
+        //        System.out.println(getUserOpenOrders(Bot_Action.key, Bot_Action.secret).get("order"));
 //        System.out.println(getUserOpenOrders(Bot_Action.key, Bot_Action.secret).get("orderId"));
 //
         System.out.println(getUserBalansInfo(Bot_Action.key, Bot_Action.secret).get("reserv"));

@@ -90,16 +90,26 @@ public class Calculation {
         return formPrise;
     }
 
+    public static HashMap getPartTrustBalans(double trustedLimUsd, String curPrise, int ballansPart) {
+        HashMap<String, Double> balPart = new HashMap<>();
+        double part = trustedLimUsd / Double.parseDouble(curPrise);
+        part = part / ballansPart;
+        balPart.put("partEth", part);
+        part = trustedLimUsd / ballansPart;
+        balPart.put("partUsd", part);
+        return balPart;
+    }
+
     public static HashMap getChekTrustBalans(String key, String secret, String valentName, double trustedLimUsd, String curPrise) {
         HashMap<String, String> balState = new HashMap<String, String>();
         Modules m = new Modules();
         double balInEth = Double.parseDouble(curPrise) * (double) m.getConfBallans(key, secret, valentName).get("val");
         double balInUsd = (double) Modules.getConfBallans(key, secret, valentName).get("usd");
-        System.out.println("balInEth "+balInEth);
-        System.out.println("balInUsd "+balInUsd);
+        System.out.println("balInEth " + balInEth);
+        System.out.println("balInUsd " + balInUsd);
         double trustBalEth = trustedLimUsd / Double.parseDouble(curPrise);
-        System.out.println("trustBalEth "+trustBalEth);
-        
+        System.out.println("trustBalEth " + trustBalEth);
+
         balState.put("trustEth", String.valueOf(getFormatPrise(trustBalEth, "#0.00000000")));
         balState.put("trustUsd", String.valueOf(trustedLimUsd));
         if (trustedLimUsd > balInUsd && trustedLimUsd > balInEth) {

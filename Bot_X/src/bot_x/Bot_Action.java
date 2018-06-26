@@ -21,8 +21,17 @@ public class Bot_Action {
     static double orderLifeTime = 0;
     static int orderCount = 0;
     static boolean averageOrCurent = false;
+    static int part;
 
-     public static void setPrsProfit(String PrsProf) {
+    public static void setPart(String part) {
+        part = part;
+    }
+
+    public static int getPart() {
+        return part;
+    }
+
+    public static void setPrsProfit(String PrsProf) {
         persProfit = Double.parseDouble(PrsProf);
 
     }
@@ -30,7 +39,7 @@ public class Bot_Action {
     public static double getPrsProfit() {
         return persProfit;
     }
-    
+
     public static void setorderLifeTime(String LifeTime) {
         orderLifeTime = Double.parseDouble(LifeTime.replace(",", "."));
 
@@ -81,5 +90,4 @@ public class Bot_Action {
         return valent;
     }
 
-    
 }

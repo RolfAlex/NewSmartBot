@@ -579,6 +579,31 @@ public class BotInterfase extends javax.swing.JFrame {
             @Override
             protected Void doInBackground() throws Exception {
                 System.out.println("st");
+
+                double prise = Calculation.getFormatPrise(Double.parseDouble(Modules.getPrise(Bot_Action.key, Bot_Action.secret, Bot_Action.getPair()).get("1").toString()), "#0.00000");
+
+                double oldOrderPrise = 480;
+                double orderPrise = Calculation.getOldOrderBuyPrise(Bot_Action.getPair(), Bot_Action.getPrsProfit(), Bot_Action.key, Bot_Action.secret, Bot_Action.trustLimit, oldOrderPrise);
+                double quantiti = Double.parseDouble(Calculation.getPartTrustBalans(Bot_Action.trustLimit, String.valueOf(prise), Bot_Action.part).get("partEth").toString());
+                System.out.println(prise);
+                System.out.println(orderPrise);
+                System.out.println(quantiti);
+//        Modules.orderTypeCreated(Bot_Action.key, Bot_Action.secret, Bot_Action.pair, String.valueOf(quantiti), String.valueOf(orderPrise), "buy");
+
+                return null;
+            }
+        };
+        worker.execute();
+    }
+
+    /* public void start() {
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                System.out.println("st");
+                
+            
+                
                 prise = Calculation.getFormatPrise(Double.parseDouble(Modules.getPrise(key, secret, pair).get("1").toString()), "#0.0000");
                 while (stop) {
                     double trustedLimitUSD = Double.parseDouble((String) Calculation.getChekTrustBalans(key, secret, Bot_Action.getValent(), Bot_Action.getTrustLimit(), String.valueOf(prise)).get("trustUsd"));
@@ -738,14 +763,14 @@ public class BotInterfase extends javax.swing.JFrame {
                     }
                 }
 
-                stop = true;
+                stop = true;}
+            
                 return null;
             }
         };
         worker.execute();
-    }
+    }*/
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////                    
-
     public static void startBal() {
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
